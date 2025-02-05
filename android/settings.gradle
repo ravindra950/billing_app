@@ -1,6 +1,14 @@
-pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
-plugins { id("com.facebook.react.settings") }
-extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
-rootProject.name = 'billing'
-include ':app'
-includeBuild('../node_modules/@react-native/gradle-plugin')
+pluginManagement {
+    repositories {
+        maven {
+            url("$rootDir/../node_modules/react-native/android")
+        }
+        google()
+        mavenCentral()
+        maven { url 'https://maven.pkg.github.com/facebook/react-native' } // Add this for safety
+    }
+    includeBuild("../node_modules/@react-native/gradle-plugin")
+}
+
+rootProject.name = "billing"
+include(":app")

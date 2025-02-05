@@ -54,6 +54,7 @@ react {
     autolinkLibrariesWithApp()
 }
 
+
 /**
  * Set this to true to Run Proguard on Release builds to minify the Java bytecode.
  */
@@ -71,6 +72,10 @@ def enableProguardInReleaseBuilds = false
  * this variant is about 6MiB larger per architecture than default.
  */
 def jscFlavor = 'org.webkit:android-jsc:+'
+project.ext.react = [
+    enableHermes: true,  // Change to false if you're not using Hermes
+]
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 android {
     ndkVersion rootProject.ext.ndkVersion
